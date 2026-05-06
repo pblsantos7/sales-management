@@ -1,5 +1,5 @@
 {
-  "name": "product-management",
+  "name": "sales-management",
   "version": "1.0.0",
   "description": "Management system built for practical growth in software engineering and backend development.",
   "main": "src/index.js",
