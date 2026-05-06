@@ -1,0 +1,21 @@
+{
+  "name": "product-management",
+  "version": "1.0.0",
+  "description": "Management system built for practical growth in software engineering and backend development.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pblsantos7/product-management.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/pblsantos7/product-management/issues"
+  },
+  "homepage": "https://github.com/pblsantos7/product-management#readme"
+}
