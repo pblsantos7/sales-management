@@ -38,3 +38,15 @@ export function updateClient(id, name, cpf){
     clients[clientIndex] = updatedClient
     return updatedClient
 }
+
+export function findClientById(id){
+    const client = clients.find(client => client.id === id)
+    if(!client){
+        return {success: false, error: "CLIENT_NOT_FOUND"}
+    }
+    return client
+}
+
+export function listClients(){
+    return clients
+}
