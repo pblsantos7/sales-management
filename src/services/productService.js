@@ -7,7 +7,7 @@ function createProduct(name, price, quantity) {
     if (!productValidation.valid) {
         return productValidation
     }
-    const newId = generateID(products);
+    const newId = generateID(products)
     const product = {
         id: newId,
         name,
