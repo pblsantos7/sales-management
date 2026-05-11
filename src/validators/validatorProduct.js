@@ -2,41 +2,41 @@ import isEmpty from "../utils/isEmpty.js";
 
 function validateName(name) {
     const validateEmptyName = isEmpty(name)
-    if (!validateEmptyName.valid) {
+    if (!validateEmptyName.success) {
         return validateEmptyName
     }
-    return { valid: true };
+    return { success: true };
 }
 
 function validatePrice(price) {
     const validateEmptyPrice = isEmpty(price)
-    if (!validateEmptyPrice.valid) {
+    if (!validateEmptyPrice.success) {
         return validateEmptyPrice
     }
     const convertedPrice = Number(price)
     if (isNaN(convertedPrice)) {
-        return { valid: false, error: "PRICE_NOT_NUMBER" }
+        return { success: false, error: "PRICE_NOT_NUMBER" }
     }
     if (convertedPrice <= 0) {
-        return { valid: false, error: "NEGATIVE_OR_ZERO_PRICE" };
+        return { success: false, error: "NEGATIVE_OR_ZERO_PRICE" };
     }
-    return { valid: true }
+    return { success: true }
 }
 
 function validateQuantity(quantity) {
     const validateEmptyQuantity = isEmpty(quantity)
-    if (!validateEmptyQuantity.valid) {
+    if (!validateEmptyQuantity.success) {
         return validateEmptyQuantity
     }
     const convertedQuantity = Number(quantity)
     if (isNaN(convertedQuantity)) {
-        return { valid: false, error: "QUANTITY_IS_NOT_NUMBER" };
+        return { success: false, error: "QUANTITY_IS_NOT_NUMBER" };
     }
     if (convertedQuantity < 0) {
-        return { valid: false, error: "QUANTITY_NEGATIVE" };
+        return { success: false, error: "QUANTITY_NEGATIVE" };
 
     }
-    return { valid: true }
+    return { success: true }
 }
 
 function validateProduct(name, price, quantity) {
@@ -44,16 +44,16 @@ function validateProduct(name, price, quantity) {
     const functionValidatePrice = validatePrice(price)
     const funtionValidateQuantity = validateQuantity(quantity)
 
-    if (!functionValidateName.valid) {
+    if (!functionValidateName.success) {
         return functionValidateName
     }
-    if (!functionValidatePrice.valid) {
+    if (!functionValidatePrice.success) {
         return functionValidatePrice
     }
-    if (!funtionValidateQuantity.valid) {
+    if (!funtionValidateQuantity.success) {
         return funtionValidateQuantity
     }
-    return { valid: true }
+    return { success: true }
 }
 
 export default validateProduct

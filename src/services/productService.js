@@ -4,7 +4,7 @@ import validateProduct from "../validators/validatorProduct.js";
 
 export function createProduct(name, price, quantity) {
     const productValidation = validateProduct(name, price, quantity)
-    if (!productValidation.valid) {
+    if (!productValidation.success) {
         return productValidation
     }
     const newId = generateID(products)
@@ -27,7 +27,7 @@ export function updateProduct(id, name, price, quantity){
     const originalProduct = products[productIndex]
     const validation = validateProduct(name, price, quantity)
 
-    if(!validation.valid){
+    if(!validation.success){
         return validation
     }
 

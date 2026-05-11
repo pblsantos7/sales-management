@@ -4,7 +4,7 @@ import validateClient from '../validators/validatorClient.js'
 
 export function createClient(name, cpf){
     const clientValidation = validateClient(name, cpf)
-    if(!clientValidation.valid){
+    if(!clientValidation.success){
         return clientValidation
     }
     const newId = generateID(clients)
@@ -26,7 +26,7 @@ export function updateClient(id, name, cpf){
     const originalClient = clients[clientIndex]
     const validation = validateClient(name, cpf)
 
-    if(!validation.valid){
+    if(!validation.success){
         return validation
     }
 
@@ -49,4 +49,12 @@ export function findClientById(id){
 
 export function listClients(){
     return clients
+}
+
+export function deleteClient(id){
+    const clientIndex = clients.findIndex(client => client.id === id)
+    if(clientIndex === -1){
+        return {success: false, error: "CLIENT_NOT_FOUND"}
+    }
+    return clients.splice(clientIndex, 1)
 }

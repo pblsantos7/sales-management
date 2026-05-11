@@ -1,8 +1,8 @@
 function isEmpty(value){
     if(value.trim() === ""){
-        return {valid: false, error: "EMPTY_FIELD"}
+        return {success: false, error: "EMPTY_FIELD"}
     }
-    return {valid: true}
+    return {success: true}
 }
 
 export default isEmpty
