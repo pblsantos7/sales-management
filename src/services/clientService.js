@@ -2,7 +2,7 @@ import clients from '../data/clients.js'
 import generateID from '../utils/generateID.js'
 import validateClient from '../validators/validatorClient.js'
 
-function createClient(name, cpf){
+export function createClient(name, cpf){
     const clientValidation = validateClient(name, cpf)
     if(!clientValidation.valid){
         return clientValidation
@@ -17,4 +17,24 @@ function createClient(name, cpf){
     return client
 }
 
-export default createClient
+export function updateClient(id, name, cpf){
+    const clientIndex = clients.findIndex(client => client.id === id)
+    if(clientIndex === -1){
+        return {success: false, error: "CLIENT_NOT_FOUND"}
+    }
+
+    const originalClient = clients[clientIndex]
+    const validation = validateClient(name, cpf)
+
+    if(!validation.valid){
+        return validation
+    }
+
+    const updatedClient = {
+        ...originalClient,
+        name,
+        cpf
+    }
+    clients[clientIndex] = updatedClient
+    return updatedClient
+}
