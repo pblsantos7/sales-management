@@ -52,3 +52,12 @@ export function findProductById(id){
 export function listProducts(){
     return products
 }
+
+export function deleteProduct(id){
+   const productIndex = products.findIndex(product => product.id === id)
+   if(productIndex === -1){
+    return {success: false, error: "PRODUCT_NOT_FOUND"}
+   }
+
+   return products.splice(productIndex, 1)
+}
