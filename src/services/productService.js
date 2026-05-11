@@ -41,4 +41,14 @@ export function updateProduct(id, name, price, quantity){
     return updatedProduct
 }
 
+export function findProductById(id){
+    const product = products.find(product => product.id === id)
+    if(!product){
+        return {success: false, error: "PRODUCT_NOT_FOUND"}
+    }
+    return product
+}
 
+export function listProducts(){
+    return products
+}
