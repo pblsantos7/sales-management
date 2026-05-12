@@ -15,7 +15,7 @@ export function createProduct(name, price, quantity) {
         quantity: Number(quantity)
     };
     products.push(product);
-    return product;
+    return {success: true, data: product}
 }
 
 export function updateProduct(id, name, price, quantity){
@@ -38,7 +38,7 @@ export function updateProduct(id, name, price, quantity){
         quantity: Number(quantity) 
     }
     products[productIndex] = updatedProduct
-    return updatedProduct
+    return {success: true, data: updatedProduct}
 }
 
 export function findProductById(id){
@@ -46,11 +46,11 @@ export function findProductById(id){
     if(!product){
         return {success: false, error: "PRODUCT_NOT_FOUND"}
     }
-    return product
+    return {success: true, data: product}
 }
 
 export function listProducts(){
-    return products
+    return {success: true, data: [...products]}
 }
 
 export function deleteProduct(id){
@@ -58,6 +58,7 @@ export function deleteProduct(id){
    if(productIndex === -1){
     return {success: false, error: "PRODUCT_NOT_FOUND"}
    }
-
-   return products.splice(productIndex, 1)
+   const deletedProduct = products.splice(productIndex, 1)[0]
+   return {success: true, data: deletedProduct}
+   
 }

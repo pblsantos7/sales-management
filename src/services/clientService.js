@@ -14,7 +14,7 @@ export function createClient(name, cpf){
         cpf
     }
     clients.push(client)
-    return client
+    return {success: true, data: client}
 }
 
 export function updateClient(id, name, cpf){
@@ -36,7 +36,7 @@ export function updateClient(id, name, cpf){
         cpf
     }
     clients[clientIndex] = updatedClient
-    return updatedClient
+    return {success: true, data: updatedClient}
 }
 
 export function findClientById(id){
@@ -44,11 +44,11 @@ export function findClientById(id){
     if(!client){
         return {success: false, error: "CLIENT_NOT_FOUND"}
     }
-    return client
+    return {success: true, data: client}
 }
 
 export function listClients(){
-    return clients
+    return {success: true, data: [...clients]}
 }
 
 export function deleteClient(id){
@@ -56,5 +56,6 @@ export function deleteClient(id){
     if(clientIndex === -1){
         return {success: false, error: "CLIENT_NOT_FOUND"}
     }
-    return clients.splice(clientIndex, 1)
+    const deletedClient = clients.splice(clientIndex, 1)[0]
+    return {success: true, data: deletedClient}
 }
