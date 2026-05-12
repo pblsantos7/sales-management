@@ -18,7 +18,7 @@ function validatePrice(price) {
         return { success: false, error: "PRICE_NOT_NUMBER" }
     }
     if (convertedPrice <= 0) {
-        return { success: false, error: "NEGATIVE_OR_ZERO_PRICE" };
+        return { success: false, error: "NEGATIVE_OR_ZERO_PRICE" }
     }
     return { success: true }
 }
@@ -30,12 +30,16 @@ function validateQuantity(quantity) {
     }
     const convertedQuantity = Number(quantity)
     if (isNaN(convertedQuantity)) {
-        return { success: false, error: "QUANTITY_IS_NOT_NUMBER" };
+        return { success: false, error: "QUANTITY_IS_NOT_NUMBER" }
     }
     if (convertedQuantity < 0) {
-        return { success: false, error: "QUANTITY_NEGATIVE" };
+        return { success: false, error: "QUANTITY_NEGATIVE" }
 
     }
+    if (!Number.isInteger(convertedQuantity)) {
+        return { success: false, error: "QUANTITY_IS_NOT_WHOLE" }
+    }
+
     return { success: true }
 }
 
