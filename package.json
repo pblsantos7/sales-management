@@ -2,9 +2,10 @@
   "name": "sales-management",
   "version": "1.0.0",
   "description": "Management system built for practical growth in software engineering and backend development.",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
